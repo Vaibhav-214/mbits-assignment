@@ -2,6 +2,7 @@ package dev.vaibhav.mbits.presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -39,12 +40,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.vaibhav.mbits.R
 import dev.vaibhav.mbits.presentation.BreathingToolScreenUiState
+import dev.vaibhav.mbits.ui.theme.blackTransparent
 import dev.vaibhav.mbits.ui.theme.interFamily
 import dev.vaibhav.mbits.util.mapToIcon
 import dev.vaibhav.mbits.util.subListOrEmpty
 
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BreathingToolBottomSheet(
     state: BreathingToolScreenUiState,
@@ -57,19 +58,19 @@ fun BreathingToolBottomSheet(
             .padding(16.dp)
             .heightIn(min = 100.dp)
     ) {
-        Divider(
+        Box(
             modifier = Modifier
                 .fillMaxWidth()
+                .height(1.dp)
                 .background(
                     brush = Brush.horizontalGradient(
                         listOf(
-                            Color.Black,
+                           blackTransparent,
                             Color.White,
-                            Color.Black
+                            blackTransparent
                         )
                     )
                 ),
-            thickness = 1.dp,
         )
 
         Spacer(modifier = Modifier.height(16.dp))
