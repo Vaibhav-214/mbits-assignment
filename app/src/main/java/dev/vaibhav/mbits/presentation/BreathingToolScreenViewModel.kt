@@ -24,8 +24,9 @@ class BreathingToolScreenViewModel @Inject constructor(
     fun initScreenState() = viewModelScope.launch {
         val response = breathingToolRepository.getBreathingToolData(
             userId = "6309a9379af54f142c65fbfe",
-            date = Date(1711860932992)
+            date = Date()
         )
+
         when(response) {
             is Response.Success -> {
                 _uiState.update {
@@ -35,20 +36,15 @@ class BreathingToolScreenViewModel @Inject constructor(
             is Response.Error -> {
                 _uiState.update { it.copy(errorMessage = response.error.message) }
             }
-            else -> {
-
-            }
+            else -> { }
         }
-
     }
-
-
 }
 
 data class BreathingToolScreenUiState(
     val setDuration: Int = 0,
     val vitaminDCounter: Long = 0,
     val errorMessage: String? = null,
-    val toolData: Data? = null
+    val toolData: Data = Data()
 )
 

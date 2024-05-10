@@ -7,6 +7,7 @@ gson = "2.10.1"
 retrofit = "2.9.0"
 compose-viewModel = "2.7.0"
 compose-navigation = "2.7.7"
+okhttp = "4.12.0"
 
 [libraries]
 hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hilt-navigation-compose" }
@@ -19,7 +20,8 @@ compose-navigation = { module = "androidx.navigation:navigation-compose", versio
 compose-viewModel = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "compose-viewModel"}
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit"}
 moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "retrofit"}
-
+gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit"}
+okhttp-logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp"}
 
 
 [plugins]

@@ -7,7 +7,9 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dev.vaibhav.mbits.data.BreathingToolApiService
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
@@ -16,15 +18,13 @@ import java.util.concurrent.TimeUnit
 class NetworkModule {
 
     @Provides
-    fun provideMoshi(): Moshi {
-        return Moshi.Builder()
-            .build()
-    }
-
-
-    @Provides
     fun provideOkHttpClient(): OkHttpClient {
+        val loggingInterceptor = HttpLoggingInterceptor()
+        loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+
         return OkHttpClient.Builder()
+            .addInterceptor(loggingInterceptor)
+            .hostnameVerifier { _, _ -> true }
             .writeTimeout(30, TimeUnit.SECONDS)
             .retryOnConnectionFailure(true)
             .build()
@@ -33,12 +33,11 @@ class NetworkModule {
     @Provides
     fun provideRetrofit(
         okHttpClient: OkHttpClient,
-        moshi: Moshi
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://whealthcare-dev.ap-southeast-1.elasticbeanstalk.com/tools/")
+            .baseUrl("https://whealthcare-dev.ap-southeast-1.elasticbeanstalk.com/")
             .client(okHttpClient)
-            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
 

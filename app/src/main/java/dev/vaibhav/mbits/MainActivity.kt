@@ -18,7 +18,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import dev.vaibhav.mbits.presentation.BreathingToolScreen
 import dev.vaibhav.mbits.presentation.BreathingToolScreenUiState
 import dev.vaibhav.mbits.presentation.BreathingToolScreenViewModel
-import dev.vaibhav.mbits.presentation.CustomCircularValueSelector
 import dev.vaibhav.mbits.ui.theme.AssignmentTheme
 
 @AndroidEntryPoint

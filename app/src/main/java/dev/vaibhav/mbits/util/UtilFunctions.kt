@@ -20,3 +20,11 @@ fun convertValueToAngle(value: Float): Float {
         225 - angle
     }
 }
+
+fun <T> List<T>.subListOrEmpty(startIndex: Int, endIndex: Int): List<T> {
+    return if (this.size>= endIndex && startIndex < endIndex) {
+        this.subList(startIndex, endIndex)
+    } else {
+        emptyList()
+    }
+}

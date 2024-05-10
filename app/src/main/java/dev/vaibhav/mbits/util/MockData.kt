@@ -1,6 +1,7 @@
 package dev.vaibhav.mbits.util
 
 import dev.vaibhav.mbits.R
+import dev.vaibhav.mbits.domain.Practice
 
 object MockData {
     val data = listOf<MockBreathingToolData>(
@@ -42,8 +43,29 @@ object MockData {
     )
 }
 
+fun Practice.mapToIcon(): PracticeData {
+    val iconId = when(this.title) {
+        "Exercise" -> R.drawable.exercise
+        "Pace" -> R.drawable.speedometer
+        "Level" -> R.drawable.rise
+        "Music" -> R.drawable.music
+        "Language" -> R.drawable.language
+        "Break" -> R.drawable.pause
+        "Target" -> R.drawable.goal
+        else -> {
+            R.drawable.faq
+        }
+    }
+
+    return PracticeData(iconId = iconId, data = this)
+}
 data class MockBreathingToolData(
     val iconId: Int,
     val title: String,
     val subTitle: String
+)
+
+data class PracticeData(
+    val iconId: Int,
+    val data: Practice
 )

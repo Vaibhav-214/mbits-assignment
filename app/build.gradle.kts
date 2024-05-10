@@ -79,6 +79,8 @@ dependencies {
     implementation(libs.compose.navigation)
     implementation(libs.compose.viewModel)
     implementation(libs.moshi)
+    implementation(libs.gson)
+    implementation(libs.okhttp.logging.interceptor)
 
 }
 
